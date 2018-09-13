@@ -33,21 +33,22 @@
                     <div id="menu">
                         <div class="list-group list-group-flush">
                             <a href="#" class="list-group-item list-group-item-action">Inicio</a>                            
-                            <a href="#" class="list-group-item list-group-item-action ">Definicion de Horarios</a>
+                            <a href="#" class="list-group-item list-group-item-action ">Horarios del Paciente</a>
                             <div class="btn-group dropright">
-                                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Medicamentos</a>
+                                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Rutina</a>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Eliminar Medicamentos</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Modificar Medicamentos</a>
+                                    <a href="../rutina/viewAñadirMedicamentos.php" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
+                                    <a href="#" class="list-group-item list-group-item-action ">Añadir Hábito</a>
+                                    <a href="#" class="list-group-item list-group-item-action ">Eliminar Rutina</a>
+                                    <a href="#" class="list-group-item list-group-item-action ">Modificar Rutina</a>
                                 </div>
                             </div>
                             <div class="btn-group dropright">
                                 <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Recordatorios</a>
                                 <div class="dropdown-menu">
-                                    <a href="viewAñadirRecordatorios.php" class="list-group-item list-group-item-action ">Añadir Recordatorio</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Eliminar Recordatorio</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Modificar Recordatorio</a>
+                                    <a href="../recordatorios/viewAñadirRecordatorios.php" class="list-group-item list-group-item-action ">Añadir Recordatorio</a>
+                                    <a href="../recordatorios/viewEliminarRecordatorios.php" class="list-group-item list-group-item-action ">Eliminar Recordatorio</a>
+                                    <a href="../recordatorios/viewModificarRecordatorios.php" class="list-group-item list-group-item-action ">Modificar Recordatorio</a>
                                 </div>
                             </div>
                             <div class="btn-group dropright">
@@ -70,6 +71,7 @@
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
                                 <div class="dropdown-menu" style="color: white">
                                     <a class="dropdown-item" href="#">Opciones</a>
+                                    <a class="dropdown-item" href="#">Ayuda</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
                                 </div>

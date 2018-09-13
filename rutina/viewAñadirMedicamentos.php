@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Alois - Recordatorios</title>
+        <title>Alois - Gestión Rutina Paciente</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,7 +28,7 @@
 <body>
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-            <a class="navbar-brand text-white" href="../principal"><i class="fas fa-arrow-left" style="margin-right:10px"></i>Recordatorios</a>
+            <a class="navbar-brand text-white" href="../principal"><i class="fas fa-arrow-left" style="margin-right:10px"></i>Medicamentos</a>
             <ul class="navbar-nav ml-auto" style="margin-right: 10px">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
@@ -43,23 +43,28 @@
     
         <!--Formulario-->
         <div class="container-fluid" style="padding:20px">
-            <form action="scriptAñadirRecordatorio.php" method="post">
+            <form action="scriptAñadirMedicamento.php" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-7">
-                        <label>Nombre</label>
+                        <label>Nombre del Medicamento</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">   
-                        <label>Fecha Inicio</label>
-                        <input type="date" name="fechaInicio" class="form-control" required>
+                        <label>Día</label>
+                        <select name="dia" class="form-control">
+                                <option selected></option>
+                                <option>Lunes</option>
+                                <option>Martes</option>
+                                <option>Miercoles</option>
+                                <option>Jueves</option>
+                                <option>Viernes</option>
+                                <option>Sabado</option>
+                                <option>Domingo</option>
+                            </select>
                     </div>
                     <div class="form-group col-md-3">   
-                        <label>Fecha Fin</label>
-                        <input type="date" name="fechaFin" class="form-control" required>
-                    </div>
-                    <div class="form-group col-md-1">   
                         <label>Hora</label>
                         <input type="time" name="hora" class="form-control" required>
                     </div>
@@ -71,7 +76,14 @@
                                 <option selected>No</option>
                                 <option>Todos los dias</option>
                                 <option>Una vez a la semana</option>
-                                <option>Una vez al mes</option>
+                            </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Frecuencia</label>
+                            <select name="frecuencia" class="form-control">
+                                <option selected>No</option>
+                                <option>Cada 8 horas</option>
+                                <option>Cada 12 horas</option>
                             </select>
                     </div>
                 </div>
@@ -87,7 +99,7 @@
                 if ($_GET["success"]) 
                 echo'<div class="alert alert-success" style="margin-top: 10px;" role="alert">El recordatorio se ha añadido</div>';
                 ?>
-                <button type="submit" class="btn btn-primary">Añadir Recordatorio</button>
+                <button type="submit" class="btn btn-primary">Añadir Medicamento</button>
             </form>
         </div>
     
