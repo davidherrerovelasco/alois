@@ -22,15 +22,15 @@
     if(mysqli_num_rows($result)==0) {
         //No se ha encontrado el usuario con el email.
         mysqli_close($conn);
-        die(header("location:loginView.php?loginFailed=true"));
+        die(header("location:index.php?loginFailed=true"));
     }else{
         $row = $result->fetch_assoc();
         $hash=$row["contrasena"];
         if (password_verify($pass, $hash)){
             //Establecemos las cookies:
-            setcookie("id",$row["id"],time()+43200);
-            setcookie("email",$email,time()+43200);
-            setcookie("imagen",$row["imagenPaciente"],time()+43200);
+            setcookie("id",$row["id"],time()+43200,'/');
+            setcookie("email",$email,time()+43200,'/');
+            setcookie("imagen",$row["imagenPaciente"],time()+43200,'/');
             
             mysqli_close($conn);
             header("location:/principal/index.php?id=".$row["id"]);

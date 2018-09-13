@@ -17,24 +17,17 @@
     $provincia = $_POST['provincia']; 
     $pass = $_POST['password']; 
 
-    //encriptamos la contraseña para almacenarla:
+    //Encriptamos la contraseña para almacenarla:
     $passEncripted=password_hash($pass,PASSWORD_DEFAULT);
 
-    //Insertamos la imagen del paciente en nuestro servidor:
-    $dir='Imagenes/';
+    //Recogemos los datos de la imagen para poder insertarla en el servidor:
+    $dir='../Imagenes/Pacientes/';
     $expensions= array("jpeg");
     $file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
     if(in_array($file_ext,$expensions) == false){
         die(header("location:index.php?ImageNotSupported=true"));
     }
-    $imagen = $dir . $email.".jpeg";
-
-
-    if (move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen)) {
-        echo "El fichero es válido y se subió con éxito.\n";
-    } else {
-        echo "¡Posible ataque de subida de ficheros!\n";
-    }
+    
       
     //Creamos la conexion con el servidor mysql:
     $conn = mysqli_connect($servername, $username, $password,$dbname);
@@ -54,8 +47,8 @@
     }
          
     //Si no existe introducimos al paciente en la base de datos:
-    $sql = "INSERT INTO pacientes (nombre,ape1,ape2,sexo,email,edad,telefono,ciudad,direccion,provincia,contrasena,imagenPaciente) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$sexo."','".$email."',".
-        $edad.",'".$telefono."','".$ciudad."','".$direccion."','".$provincia."','".$passEncripted."','".$imagen."');";
+    $sql = "INSERT INTO pacientes (nombre,ape1,ape2,sexo,email,edad,telefono,ciudad,direccion,provincia,contrasena) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$sexo."','".$email."',".
+        $edad.",'".$telefono."','".$ciudad."','".$direccion."','".$provincia."','".$passEncripted."');";
 
     $result = mysqli_query($conn, $sql);
     if($result == FALSE) {
@@ -72,9 +65,21 @@
         $result = mysqli_query($conn, $sql);
         $row = $result->fetch_assoc();
         
-        setcookie("id",$row["id"],time()+43200);
-        setcookie("email",$email,time()+43200);
-        setcookie("imagen",$imagen,time()+43200);
+        $imagen = $dir . $row["id"].".jpeg";
+        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen)) {
+            echo "El fichero es válido y se subió con éxito.\n";
+        } else {
+            echo "¡Posible ataque de subida de ficheros!\n";
+        }
+        
+        $sql = "UPDATE pacientes set imagenPaciente='".$imagen."' where email='".$email."'";
+        $result = mysqli_query($conn, $sql);
+        
+        setcookie("id",$row["id"],time()+43200,'/');
+        setcookie("email",$email,time()+43200,'/');
+        setcookie("imagen",$imagen,time()+43200,'/');
+        
+        
         
         //Mandamos email:
         $mensaje= "Bienvenido a nuestro servicio de atencion y seguimiento de personas con Alzheimer su correo de acceso al sistema es ".$email;

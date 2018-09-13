@@ -45,7 +45,7 @@
                 echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">El usuario o la contraseña no son correctas</div>';
             ?>
             <div class="text-center" style="padding-bottom: 10px">
-                <a href="signupView.php"> ¿No estas registrado? Regístrate</a>
+                <a href="../signup/"> ¿No estas registrado? Regístrate</a>
                 <br>
                 <a href="url"> He olvidado la contraseña</a>
                 <p style="font-size:10px;padding-top:10px">Copyright &copy 2018 Alois,Inc</p>

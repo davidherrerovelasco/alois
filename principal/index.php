@@ -27,7 +27,7 @@
                         <a class="navbar-brand text-white">Alois - Inicio</a>
                     </nav>
                     <div id="cabecera" style="height:220px">
-                        <img class="rounded mx-auto d-block" style="width:150px;height:100px;margin:30px 0" src="<?php echo $_COOKIE["imagen"]?>">
+                        <img class="rounded mx-auto d-block" style="width:150px;height:100px;margin:30px 0" src="<?php echo $_COOKIE["imagen"];?>">
                         <h4 class="text-center">David Herrero Velasco</h4>
                     </div>
                     <div id="menu">
@@ -53,9 +53,9 @@
                             <div class="btn-group dropright">
                                 <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar Familiares</a>
                                 <div class="dropdown-menu">
-                                    <a href="viewAñadirFamiliar.php" class="list-group-item list-group-item-action">Añadir Familiares</a>
-                                    <a href="viewEliminarFamiliares.php" class="list-group-item list-group-item-action ">Eliminar Familiares</a>
-                                    <a href="viewModificarFamiliares.php" class="list-group-item list-group-item-action ">Modificar Familiares</a>
+                                    <a href="../familiares/viewAñadirFamiliar.php" class="list-group-item list-group-item-action">Añadir Familiares</a>
+                                    <a href="../familiares/viewEliminarFamiliares.php" class="list-group-item list-group-item-action ">Eliminar Familiares</a>
+                                    <a href="../familiares/viewModificarFamiliares.php" class="list-group-item list-group-item-action ">Modificar Familiares</a>
                                 </div>
                             </div>
                         </div>

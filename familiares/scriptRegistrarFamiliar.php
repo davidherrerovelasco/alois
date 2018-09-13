@@ -38,6 +38,6 @@
             echo "No se ha podido enviar el mensaje";
         }
         mysqli_close($conn);
-        header ("location: principalView.php"); 
+        header ("location: ../principal"); 
     }
 ?>

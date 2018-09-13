@@ -28,14 +28,14 @@
 <body>
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-            <a class="navbar-brand text-white" href="principalView.php"><i class="fas fa-arrow-left" style="margin-right:10px"></i>Añadir Familiares</a>
+            <a class="navbar-brand text-white" href="../principal/"><i class="fas fa-arrow-left" style="margin-right:10px"></i>Añadir Familiares</a>
             <ul class="navbar-nav ml-auto" style="margin-right: 10px">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
                     <div class="dropdown-menu" style="color: white">
                         <a class="dropdown-item" href="#">Opciones</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="index.php">Salir</a>
+                        <a class="dropdown-item" href="../principal/scriptLogOut.php">Salir</a>
                     </div>
                 </li>
             </ul>
