@@ -4,5 +4,5 @@
     setcookie("imagen",null,time()-1);
     setcookie("email",null,time()-1);
 
-    die(header("location: ../index.php"));
+    die(header("location: ../"));
 ?>

@@ -33,14 +33,14 @@
                     <div id="menu">
                         <div class="list-group list-group-flush">
                             <a href="#" class="list-group-item list-group-item-action">Inicio</a>                            
-                            <a href="#" class="list-group-item list-group-item-action ">Horarios del Paciente</a>
+                            <a href="#" class="list-group-item list-group-item-action ">Horario del Paciente</a>
                             <div class="btn-group dropright">
                                 <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Rutina</a>
                                 <div class="dropdown-menu">
                                     <a href="../rutina/viewAñadirMedicamentos.php" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Añadir Hábito</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Eliminar Rutina</a>
-                                    <a href="#" class="list-group-item list-group-item-action ">Modificar Rutina</a>
+                                    <a href="../rutina/viewAñadirHabito.php" class="list-group-item list-group-item-action ">Añadir Hábito</a>
+                                    <a href="../rutina/viewEliminarRutina.php" class="list-group-item list-group-item-action ">Eliminar Rutina</a>
+                                    <a href="../rutina/viewModificarRutina.php" class="list-group-item list-group-item-action ">Modificar Rutina</a>
                                 </div>
                             </div>
                             <div class="btn-group dropright">
@@ -114,7 +114,7 @@
                     </div>
                     <div class="modal-body">
                     <small>No hay ningun familiar registrado para este paciente. Por favor registre uno.</small>
-                       <form action="scriptRegistrarFamiliar.php" method="post">
+                       <form action="../familiares/scriptRegistrarFamiliar.php" method="post">
                            <div class="form-row">
                                <div class="form-group col-md-6" style="padding-left: 0px">
                                    <label for="emailFamiliar">Email</label>

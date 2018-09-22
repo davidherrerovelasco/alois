@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Alois - Gestión Rutina Paciente</title>
+        <title>Alois - Rutina</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,7 +28,7 @@
 <body>
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-            <a class="navbar-brand text-white" href="../principal"><i class="fas fa-arrow-left" style="margin-right:10px"></i>Medicamentos</a>
+            <a class="navbar-brand text-white" href="../principal"><i class="fas fa-arrow-left" style="margin-right:10px"></i>Hábito</a>
             <ul class="navbar-nav ml-auto" style="margin-right: 10px">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
@@ -43,10 +43,10 @@
     
         <!--Formulario-->
         <div class="container-fluid" style="padding:20px">
-            <form action="scriptAñadirMedicamento.php" method="post">
+            <form action="scriptAñadirHabito.php" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-7">
-                        <label>Nombre del Medicamento</label>
+                        <label>Nombre del Hábito</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                     </div>
                 </div>
@@ -70,24 +70,6 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label>Periodicidad</label>
-                            <select name="periodicidad" class="form-control">
-                                <option selected>No</option>
-                                <option>Todos los dias</option>
-                                <option>Una vez a la semana</option>
-                            </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Frecuencia</label>
-                            <select name="frecuencia" class="form-control">
-                                <option selected>No</option>
-                                <option>Cada 8 horas</option>
-                                <option>Cada 12 horas</option>
-                            </select>
-                    </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col-md-7">
                       <label for="comment">Descripción:</label>
                       <textarea class="form-control" rows="5" name="descripcion"></textarea>
@@ -97,9 +79,9 @@
                 <!--Imprimimos mensaje de exito si todo ha salido bien-->
                 <?php 
                 if ($_GET["success"]) 
-                echo'<div class="alert alert-success" style="margin-top: 10px;" role="alert">El Medicamento se ha añadido</div>';
+                echo'<div class="alert alert-success" style="margin-top: 10px;" role="alert">El habito se ha añadido</div>';
                 ?>
-                <button type="submit" class="btn btn-primary">Añadir Medicamento</button>
+                <button type="submit" class="btn btn-primary">Añadir Hábito</button>
             </form>
         </div>
     
