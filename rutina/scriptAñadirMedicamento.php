@@ -24,11 +24,11 @@
     }
 
     if(strcmp($periodico,"No")==0){
-        $frecuenciaTmp=0;
+        $periodicoTmp=0;
     }else if (strcmp($periodico,"Todos los dias")==0){
-        $frecuenciaTmp=1;
+        $periodicoTmp=1;
     }else if (strcmp($periodico,"Una vez a la semana")==0){
-        $frecuenciaTmp=2;
+        $periodicoTmp=2;
     }
 
     if(strcmp($dia,"Lunes")==0){
@@ -56,7 +56,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
          
-    $sql = "INSERT INTO medicamentos (idPaciente,periodico,dia,frecuencia,hora,nombre,descripcion) VALUES ('".$idPaciente."',".$frecuenciaTmp.",'".$diaTmp."','".$flag."','".$hora."','".$nombre."','".$descripcion."');";
+    $sql = "INSERT INTO medicamentos (idPaciente,periodico,dia,frecuencia,hora,nombre,descripcion) VALUES ('".$idPaciente."',".$periodicoTmp.",'".$diaTmp."','".$flag."','".$hora."','".$nombre."','".$descripcion."');";
 
     $result = mysqli_query($conn, $sql);
 

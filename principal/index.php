@@ -33,7 +33,7 @@
                     <div id="menu">
                         <div class="list-group list-group-flush">
                             <a href="#" class="list-group-item list-group-item-action">Inicio</a>                            
-                            <a href="#" class="list-group-item list-group-item-action ">Horario del Paciente</a>
+                            <a href="#horario" class="list-group-item list-group-item-action ">Horario del Paciente</a>
                             <div class="btn-group dropright">
                                 <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Rutina</a>
                                 <div class="dropdown-menu">
@@ -78,23 +78,22 @@
                             </li>
                         </ul>
                     </nav>
+                    <!--Parte Principal-->
                     <div style="heigth:100%;padding: 20px 30px 20px 10px;background-color:#F7F7F7">
                         <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px">
                             <h5>Ubicación del Paciente en tiempo Real:</h5>
 
                             <!--Div para mostrar el mapa donde se encuentra el paciente-->
-                            <div  id="map" style="height:400px;width:100%"></div>
-                            <div>
-
+                            <div  id="map" style="height:400px;width:100%">
+                            
                             </div>
                         </div>
                         <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:10px">
-                            <h5>Ubicación del Paciente en tiempo Real:</h5>
+                            <h5>Horario del Paciente:</h5>
 
-                            <!--Div para mostrar el mapa donde se encuentra el paciente-->
-                            <div  id="map" style="height:300px;width:100%"></div>
-                            <div>
-
+                            <!--Div para mostrar el horario configurado por el paciente-->
+                            <div class="table-responsive" id="horario" style="width:100%">
+                            
                             </div>
                         </div>
                     </div> 
@@ -182,12 +181,6 @@
             </div>
         </div>
         
-        <footer style="background-color:#000000">
-            <div class="text-center">
-                <p style="font-size:10px;padding:10px 0px;color:#ffffff">Copyright &copy 2018 Alois,Inc</p>
-            </div>
-        </footer>
-        
         <script>
             function initMap() {
               var uluru = {lat: -25.344, lng: 131.036};
@@ -202,6 +195,13 @@
                         if(data==0){
                             $("#registroFamiliar").modal({backdrop: "static"});
                         }
+                    }
+                });
+                
+                $.ajax({
+                    url: "scriptHorario.php",
+                    success: function(data) {
+                         document.getElementById("horario").innerHTML = data;
                     }
                 });
             }

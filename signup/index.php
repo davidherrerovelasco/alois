@@ -110,7 +110,7 @@
             ?>
             <?php 
                 if ($_GET["ImageNotSupported"]) 
-                echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">Solo se aceptan archivos .jpeg</div>';
+                echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">El formato de la imagen no es admitido</div>';
             ?>
         </form>
     </div>

@@ -15,7 +15,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT * FROM medicamentos where id='".$id."'";
+    $sql = "SELECT * FROM habitos where id='".$id."'";
     $result = mysqli_query($conn, $sql);
 
      if($result == FALSE) {
@@ -24,6 +24,6 @@
      }else{
          $row = mysqli_fetch_assoc($result);
          mysqli_close($conn);
-         die(header("location:viewModificarRutina.php?modificarMedicamentos=true&nombre=".$row["nombre"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
+         die(header("location:viewModificarRutina.php?modificarHabitos=true&nombre=".$row["nombre"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
      }
 ?>

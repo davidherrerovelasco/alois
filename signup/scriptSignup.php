@@ -22,7 +22,7 @@
 
     //Recogemos los datos de la imagen para poder insertarla en el servidor:
     $dir='../Imagenes/Pacientes/';
-    $expensions= array("jpeg");
+    $expensions= array("jpeg","jpg");
     $file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
     if(in_array($file_ext,$expensions) == false){
         die(header("location:index.php?ImageNotSupported=true"));
@@ -60,12 +60,17 @@
         die(header("location:index.php?signupFailed=true"));
     }else{
         //No ha habido ningun error
-        //Establecemos las cookies:
+        
         $sql = "SELECT * FROM pacientes where email='".$email."'";
         $result = mysqli_query($conn, $sql);
         $row = $result->fetch_assoc();
         
-        $imagen = $dir . $row["id"].".jpeg";
+        if(strcmp($file_ext,"jpg")==0){
+            $imagen = $dir . $row["id"].".jpg";
+        }else{
+            $imagen = $dir . $row["id"].".jpeg";
+        }
+        
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen)) {
             echo "El fichero es válido y se subió con éxito.\n";
         } else {
@@ -75,11 +80,10 @@
         $sql = "UPDATE pacientes set imagenPaciente='".$imagen."' where email='".$email."'";
         $result = mysqli_query($conn, $sql);
         
+        //Establecemos las cookies:
         setcookie("id",$row["id"],time()+43200,'/');
         setcookie("email",$email,time()+43200,'/');
         setcookie("imagen",$imagen,time()+43200,'/');
-        
-        
         
         //Mandamos email:
         $mensaje= "Bienvenido a nuestro servicio de atencion y seguimiento de personas con Alzheimer su correo de acceso al sistema es ".$email;

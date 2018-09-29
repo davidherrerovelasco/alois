@@ -15,15 +15,15 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT * FROM medicamentos where id='".$id."'";
+    $sql = "DELETE FROM habitos where id='".$id."'";
     $result = mysqli_query($conn, $sql);
 
      if($result == FALSE) {
          echo "Ha habido un error";
          mysqli_close($conn);
      }else{
-         $row = mysqli_fetch_assoc($result);
          mysqli_close($conn);
-         die(header("location:viewModificarRutina.php?modificarMedicamentos=true&nombre=".$row["nombre"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
+         die(header("location:viewEliminarRutina.php"));
      }
+
 ?>

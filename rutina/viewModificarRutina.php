@@ -13,7 +13,8 @@
         <script>
           $(document).ready(function()
           {
-             $("#modificarFamiliares").modal("show");
+              $("#modificarMedicamentos").modal("show");
+              $("#modificarHabitos").modal("show");
           });
         </script>
     </head>
@@ -57,19 +58,18 @@
             
         </div>
         <?php 
-            if ($_GET["modificar"]) 
-            echo'<!--Modal para la modificacion de los familiares-->
-                <div id="modificarFamiliares" class="modal fade"  tabindex="-1" role="dialog" aria-hidden="false">
+            if ($_GET["modificarMedicamentos"]){
+                echo'<div id="modificarMedicamentos" class="modal fade"  tabindex="-1" role="dialog" aria-hidden="false">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modificar Paciente</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Modificar Medicamentos</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="scriptModificarRecordatorio.php?id='.$_GET["id"].'" method="post">
+                                <form action="scriptModificarMedicamentos.php?id='.$_GET["id"].'" method="post">
                                     <div class="form-row">
                                         <div class="form-group col-md-7">
                                             <label>Nombre</label>
@@ -77,17 +77,40 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group">   
-                                            <label>Fecha Inicio</label>
-                                            <input type="date" name="fechaInicioModificado" class="form-control" value="'.$_GET["fInicio"].'" required>
-                                        </div>
-                                        <div class="form-group">   
-                                            <label>Fecha Fin</label>
-                                            <input type="date" name="fechaFinModificado" class="form-control" value="'.$_GET["fFin"].'" required>
+                                        <div class="form-group col-md-7">   
+                                            <label>Día</label>
+                                            <select name="diaModificado" class="form-control">
+                                                <option selected></option>
+                                                <option>Lunes</option>
+                                                <option>Martes</option>
+                                                <option>Miercoles</option>
+                                                <option>Jueves</option>
+                                                <option>Viernes</option>
+                                                <option>Sabado</option>
+                                                <option>Domingo</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">   
                                             <label>Hora</label>
-                                            <input type="time" name="horaModificado" class="form-control" value="'.$_GET["hora"].'" required>
+                                            <input type="time" name="horaModificado" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Periodicidad</label>
+                                                <select name="periodicidadModificada" class="form-control">
+                                                    <option selected>No</option>
+                                                    <option>Todos los dias</option>
+                                                    <option>Una vez a la semana</option>
+                                                </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Frecuencia</label>
+                                                <select name="frecuenciaModificada" class="form-control">
+                                                    <option selected>No</option>
+                                                    <option>Cada 8 horas</option>
+                                                    <option>Cada 12 horas</option>
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -104,6 +127,58 @@
                         </div>
                     </div>
                 </div>';
+            } else if ($_GET["modificarHabitos"]){
+                 echo'<div id="modificarHabitos" class="modal fade"  tabindex="-1" role="dialog" aria-hidden="false">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modificar Habitos</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="scriptModificarHabito.php?id='.$_GET["id"].'" method="post">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-7">
+                                            <label>Nombre</label>
+                                            <input type="text" name="nombreModificado" class="form-control" placeholder="Nombre" value="'.$_GET["nombre"].'" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-7">   
+                                            <label>Día</label>
+                                            <select name="diaModificado" class="form-control">
+                                                <option selected></option>
+                                                <option>Lunes</option>
+                                                <option>Martes</option>
+                                                <option>Miercoles</option>
+                                                <option>Jueves</option>
+                                                <option>Viernes</option>
+                                                <option>Sabado</option>
+                                                <option>Domingo</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">   
+                                            <label>Hora</label>
+                                            <input type="time" name="horaModificado" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                          <label for="comment">Descripción:</label>
+                                          <textarea class="form-control" rows="5" name="descripcionModificado" value="'.$_GET["descripcion"].'"></textarea>
+                                        </div> 
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+            }
         ?>
     <script>
         function obtenerHabitos(){
