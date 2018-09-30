@@ -60,15 +60,6 @@
             $dia=6;
         }
     }
-    if(isset($_POST['frecuenciaModificado']) && $_POST['frecuenciaModificado']!=""){
-        if(strcmp($_POST['frecuenciaModificado'],"No")==0){
-            $frecuencia=0;
-        }else if (strcmp($_POST['frecuenciaModificado'],"Cada 8 horas")==0){
-            $frecuencia=1;
-        }else if (strcmp($_POST['frecuenciaModificado'],"Cada 12 horas")==0){
-            $frecuencia=2;
-        }
-    }
     if(isset($_POST['horaModificado']) && $_POST['horaModificado']!=""){
         $hora = $_POST['horaModificado'];
     }

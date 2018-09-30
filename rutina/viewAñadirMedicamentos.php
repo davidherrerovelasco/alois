@@ -78,14 +78,6 @@
                                 <option>Una vez a la semana</option>
                             </select>
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>Frecuencia</label>
-                            <select name="frecuencia" class="form-control">
-                                <option selected>No</option>
-                                <option>Cada 8 horas</option>
-                                <option>Cada 12 horas</option>
-                            </select>
-                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-7">

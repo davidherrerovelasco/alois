@@ -16,16 +16,22 @@
 
     $consulta_habitos = "SELECT * FROM habitos where idPaciente='".$idPaciente."' order by hora";
     $result1 = mysqli_query($conn, $consulta_habitos);
-    while($row = $result1->fetch_array())
-    {
-        $rows[] = $row;
+    while($row = $result1->fetch_array()){
+        $habitos[] = $row;
     }
 
     $consulta_medicamentos = "SELECT * FROM medicamentos where idPaciente='".$idPaciente."' order by hora";
     $result2 = mysqli_query($conn, $consulta_medicamentos);
-    while($row2 = $result2->fetch_array())
-    {
-        $rows2[] = $row2;
+    while($row2 = $result2->fetch_array()){
+        $medicinas[] = $row2;
+        if($row2["periodico"]==1){//periodicidad todos los dias
+            for($i=0;$i<7;$i++){
+                if($row2["dia"]!=$i){
+                    $row2["dia"]=$i;
+                    $medicinas[] = $row2;
+                }
+            }
+        }
     }
 
     if($result1 == FALSE and $result2==FALSE) {
@@ -50,29 +56,33 @@
         //Representamos horas desde las 8 hasta las 23
         for($i=0;$i<16;$i++){
             $horaTemp=$i+8;
+            //En la base de datos las horas menores que 10 se almacenan 09 por tanto para que la
+            //comprobacion se haga correctamente para estos casos hay que añadir un 0 delante.
+            if($horaTemp<10){
+                $horaTemp="0".$horaTemp;
+            }
+            
             $tabla=$tabla.'<tr><th scope="row">'.$horaTemp.':00</th>';
+            
             for($j=0;$j<7;$j++){
                 $tabla=$tabla.'<td>';
-                foreach($rows as $row){
-                    list($hora, $minutos, $segundos) = explode(":",$row["hora"]);
+                //Hábitos
+                foreach($habitos as $habito){
+                    //Separamos la hora del formato que nos llega desde la base de datos
+                    list($hora, $minutos, $segundos) = explode(":",$habito["hora"]);
                     if($hora == $horaTemp){
-                        if($j == $row["dia"]){
-                            $tabla=$tabla.$row["nombre"]."</br>";
+                        if($j == $habito["dia"]){
+                            $tabla=$tabla.$habito["nombre"]."</br>";
                         }
                     }
                 }
-                foreach($rows2 as $row2){
-                    list($hora2, $minutos2, $segundos2) = explode(":",$row2["hora"]);
-                    
-                    $caracteres2 = preg_split('//', $hora2, -1, PREG_SPLIT_NO_EMPTY);
-                    if($caracteres2[0] == 0){
-                        $horaTemp="0".$horaTemp;
-                    }
-                    
+                //Medicinas
+                foreach($medicinas as $medicina){
+                    //Separamos la hora del formato que nos llega desde la base de datos
+                    list($hora2, $minutos2, $segundos2) = explode(":",$medicina["hora"]);                    
                     if($hora2 == $horaTemp){
-                        if($j == $row2["dia"]){
-                            $tabla=$tabla.$row2["nombre"]."</br>";
-                            $tabla=$tabla.$hora2."</br>";
+                        if($j == $medicina["dia"]){
+                            $tabla=$tabla.$medicina["nombre"]."</br>";
                         }
                     }
                 }

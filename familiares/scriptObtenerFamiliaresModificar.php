@@ -28,12 +28,13 @@
                   <th scope="col">Apellido 2</th>
                   <th scope="col">Email</th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>';
         
             while ($fila = $result->fetch_assoc()) {
-                $tabla=$tabla.'<tr><td>'.$fila["nombre"].'</td><td>'.$fila["ape1"].'</td><td>'.$fila["ape2"].'</td><td>'.$fila["email"].'</td><td><a class="btn btn-primary" href="scriptObtenerFamiliares.php?id='.$fila["id"].'" role="button">Modificar</a></td></tr>';
+                $tabla=$tabla.'<tr><td>'.$fila["nombre"].'</td><td>'.$fila["ape1"].'</td><td>'.$fila["ape2"].'</td><td>'.$fila["email"].'</td><td><a class="btn btn-primary" href="scriptObtenerFamiliares.php?id='.$fila["id"].'" role="button">Modificar</a></td></td><td><a class="btn btn-primary" href="scriptEliminarFamiliares.php?id='.$fila["id"].'" role="button">Eliminar</a></td></tr>';
             }
             $tabla=$tabla.'</tbody></table>';
             echo $tabla;

@@ -15,14 +15,6 @@
     $diaTmp=0;
     $frecuenciaTmp=0;
 
-    if(strcmp($frecuencia,"No")==0){
-        $flag=0;
-    }else if (strcmp($frecuencia,"Cada 8 horas")==0){
-        $flag=1;
-    }else if (strcmp($frecuencia,"Cada 12 horas")==0){
-        $flag=2;
-    }
-
     if(strcmp($periodico,"No")==0){
         $periodicoTmp=0;
     }else if (strcmp($periodico,"Todos los dias")==0){

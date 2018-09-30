@@ -56,6 +56,7 @@
         <div id="tablaFamiliares">
             
         </div>
+        
         <?php 
             if ($_GET["modificar"]) 
             echo'<!--Modal para la modificacion de los familiares-->

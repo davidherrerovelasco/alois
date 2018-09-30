@@ -28,7 +28,7 @@
                     </nav>
                     <div id="cabecera" style="height:220px">
                         <img class="rounded mx-auto d-block" style="width:150px;height:100px;margin:30px 0" src="<?php echo $_COOKIE["imagen"];?>">
-                        <h4 class="text-center">David Herrero Velasco</h4>
+                        <h4 class="text-center">David Herrero</h4>
                     </div>
                     <div id="menu">
                         <div class="list-group list-group-flush">
@@ -88,7 +88,7 @@
                             
                             </div>
                         </div>
-                        <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:10px">
+                        <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:20px">
                             <h5>Horario del Paciente:</h5>
 
                             <!--Div para mostrar el horario configurado por el paciente-->
