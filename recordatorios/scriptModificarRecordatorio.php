@@ -18,7 +18,7 @@
 
     if($result1 == FALSE) {
         mysqli_close($conn);
-        die(header("location:viewModificarRecordatorios.php?failed=true"));
+        die(header("location:viewGestionarRecordatorios.php?failed=true"));
     }
 
     $row = mysqli_fetch_assoc($result1);
@@ -56,10 +56,10 @@
     if($result == FALSE) {  
         mysqli_close($conn);
         echo $sql;
-        //die(header("location:viewModificarFamiliares.php?failed=true"));
+        die(header("location:viewGestionarRecordatorios.php?failed=true"));
     }else{
         mysqli_close($conn);
-        die(header("location:viewModificarRecordatorios.php?done=true"));
+        die(header("location:viewGestionarRecordatorios.php?done=true"));
     }
 
 ?>

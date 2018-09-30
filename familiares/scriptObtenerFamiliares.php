@@ -24,6 +24,6 @@
      }else{
          $row = mysqli_fetch_assoc($result);
          mysqli_close($conn);
-         die(header("location:viewModificarFamiliares.php?modificar=true&nombre=".$row["nombre"]."&ape1=".$row["ape1"]."&ape2=".$row["ape2"]."&direccion=".$row["direccion"]."&email=".$row["email"]));
+         die(header("location:viewGestionarFamiliares.php?modificar=true&nombre=".$row["nombre"]."&ape1=".$row["ape1"]."&ape2=".$row["ape2"]."&direccion=".$row["direccion"]."&email=".$row["email"]));
      }
 ?>

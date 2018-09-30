@@ -102,7 +102,7 @@
                                </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlFile1">Añada una foto del familiar</label>
+                    <label>Añada una foto del familiar</label>
                     <input type="file" class="form-control-file" name="imagen">
                 </div>
                 <button type="submit" class="btn btn-primary">Añadir</button>

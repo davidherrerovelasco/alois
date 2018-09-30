@@ -28,12 +28,20 @@
                   <th scope="col">Fecha Fin</th>
                   <th scope="col">Descripcion</th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>';
         
             while ($fila = $result->fetch_assoc()) {
-                $tabla=$tabla.'<tr><td>'.$fila["nombre"].'</td><td>'.$fila["fechaInicio"].'</td><td>'.$fila["fechaFin"].'</td><td>'.$fila["descripcion"].'</td><td><a class="btn btn-primary" href="scriptObtenerRecordatorios.php?id='.$fila["id"].'" role="button">Modificar</a></td></tr>';
+                $tabla=$tabla.'<tr>
+                <td>'.$fila["nombre"].'</td>
+                <td>'.$fila["fechaInicio"].'</td>
+                <td>'.$fila["fechaFin"].'</td>
+                <td>'.$fila["descripcion"].'</td>
+                <td><a class="btn btn-primary" href="scriptObtenerRecordatorios.php?id='.$fila["id"].'" role="button">Modificar</a></td>
+                <td><a class="btn btn-primary" href="scriptEliminarRecordatorios.php?id='.$fila["id"].'" role="button">Eliminar</a></td>
+                </tr>';
             }
             $tabla=$tabla.'</tbody></table>';
             echo $tabla;

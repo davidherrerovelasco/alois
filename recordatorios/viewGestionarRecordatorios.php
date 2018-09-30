@@ -13,7 +13,7 @@
         <script>
           $(document).ready(function()
           {
-             $("#modificarFamiliares").modal("show");
+             $("#modificarRecordatorios").modal("show");
           });
         </script>
     </head>
@@ -58,8 +58,8 @@
         </div>
         <?php 
             if ($_GET["modificar"]) 
-            echo'<!--Modal para la modificacion de los familiares-->
-                <div id="modificarFamiliares" class="modal fade"  tabindex="-1" role="dialog" aria-hidden="false">
+            echo'<!--Modal para la modificacion de los Recordatorios-->
+                <div id="modificarRecordatorios" class="modal fade"  tabindex="-1" role="dialog" aria-hidden="false">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -108,7 +108,7 @@
     <script>
         function obtenerRecordatorios(){
                 $.ajax({
-                    url: "scriptObtenerRecordatoriosModificar.php",
+                    url: "scriptObtenerRecordatoriosGestion.php",
                     success: function(data) {
                          document.getElementById("tablaRecordatorios").innerHTML = data;
                     }

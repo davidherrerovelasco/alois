@@ -51,7 +51,7 @@
                 }else if($fila["dia"]==6){
                     $diaTemp="Domingo";
                 }
-                $tabla=$tabla.'<tr><td>'.$fila["nombre"].'</td><td>'.$diaTemp.'</td><td>'.$fila["hora"].'</td><td>'.$fila["descripcion"].'</td><td><a class="btn btn-primary" href="scriptEliminarHabitos.php?id='.$fila["id"].'" role="button">Eliminar</a></td></tr>';
+                $tabla=$tabla.'<tr><td>'.$fila["nombre"].'</td><td>'.$diaTemp.'</td><td>'.$fila["hora"].'</td><td>'.$fila["descripcion"].'</td><td><a class="btn btn-primary" href="scriptObtenerHabitos.php?id='.$fila["id"].'" role="button">Modificar</a></td><td><a class="btn btn-primary" href="scriptEliminarHabito.php?id='.$fila["id"].'" role="button">Eliminar</a></td></tr>';
             }
         
             while ($fila2 = $result1->fetch_assoc()) {
@@ -70,7 +70,7 @@
                 }else if($fila2["dia"]==6){
                     $diaTemp2="Domingo";
                 }
-                $tabla=$tabla.'<tr class="table-danger"><td>'.$fila2["nombre"].'</td><td>'.$diaTemp2.'</td><td>'.$fila2["hora"].'</td><td>'.$fila2["descripcion"].'</td><td><a class="btn btn-primary" href="scriptEliminarMedicamentos.php?id='.$fila2["id"].'" role="button">Eliminar</a></td></tr>';
+                $tabla=$tabla.'<tr class="table-danger"><td>'.$fila2["nombre"].'</td><td>'.$diaTemp2.'</td><td>'.$fila2["hora"].'</td><td>'.$fila2["descripcion"].'</td><td><a class="btn btn-primary" href="scriptObtenerMedicamentos.php?id='.$fila2["id"].'" role="button">Modificar</a></td><td><a class="btn btn-primary" href="scriptEliminarMedicamentos.php?id='.$fila2["id"].'" role="button">Eliminar</a></td></tr>';
             }
         
             $tabla=$tabla.'</tbody></table>';

@@ -23,7 +23,7 @@
          mysqli_close($conn);
      }else{
          mysqli_close($conn);
-         die(header("location:viewEliminarRecordatorios.php"));
+         die(header("location:viewGestionarRecordatorios.php"));
      }
 
 ?>

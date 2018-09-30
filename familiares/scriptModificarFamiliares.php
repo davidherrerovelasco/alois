@@ -18,7 +18,7 @@
 
     if($result1 == FALSE) {
         mysqli_close($conn);
-        die(header("location:viewModificarFamiliares.php?failed=true"));
+        die(header("location:viewGestionarFamiliares.php?failed=true"));
     }
 
     $row1 = mysqli_fetch_assoc($result1);
@@ -63,10 +63,10 @@
     if($result == FALSE) {  
         mysqli_close($conn);
         echo $sql;
-        //die(header("location:viewModificarFamiliares.php?failed=true"));
+        die(header("location:viewGestionarFamiliares.php?failed=true"));
     }else{
         mysqli_close($conn);
-        die(header("location:viewModificarFamiliares.php?done=true"));
+        die(header("location:viewGestionarFamiliares.php?done=true"));
     }
 
 ?>

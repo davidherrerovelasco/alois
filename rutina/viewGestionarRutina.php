@@ -47,10 +47,10 @@
         </nav>
         <?php
             if ($_GET["failed"]){
-                 echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">Ha habido un error al modificar el recordatorio</div>';
+                 echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">Ha habido un error al modificar el hábito</div>';
             }
             if ($_GET["done"]){
-                 echo'<div class="alert alert-success" style="margin-top: 10px;" role="alert">El recordatorio ha sido modificado correctamente</div>';
+                 echo'<div class="alert alert-success" style="margin-top: 10px;" role="alert">El hábito ha sido modificado correctamente</div>';
             } 
         ?>
     
@@ -73,7 +73,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-7">
                                             <label>Nombre</label>
-                                            <input type="text" name="nombreModificado" class="form-control" placeholder="Nombre" value="'.$_GET["nombre"].'" required>
+                                            <input type="text" name="nombreModificado" class="form-control" placeholder="Nombre" value="'.$_GET["nombre"].'">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="form-group">   
                                             <label>Hora</label>
-                                            <input type="time" name="horaModificado" class="form-control" required>
+                                            <input type="time" name="horaModificado" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -134,7 +134,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-7">
                                             <label>Nombre</label>
-                                            <input type="text" name="nombreModificado" class="form-control" placeholder="Nombre" value="'.$_GET["nombre"].'" required>
+                                            <input type="text" name="nombreModificado" class="form-control" placeholder="Nombre" value="'.$_GET["nombre"].'">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -153,7 +153,7 @@
                                         </div>
                                         <div class="form-group">   
                                             <label>Hora</label>
-                                            <input type="time" name="horaModificado" class="form-control" required>
+                                            <input type="time" name="horaModificado" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -175,7 +175,7 @@
     <script>
         function obtenerHabitos(){
                 $.ajax({
-                    url: "scriptObtenerHabitosModificar.php",
+                    url: "scriptObtenerHabitosGestion.php",
                     success: function(data) {
                          document.getElementById("tablaHabitos").innerHTML = data;
                     }

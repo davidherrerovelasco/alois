@@ -24,6 +24,6 @@
      }else{
          $row = mysqli_fetch_assoc($result);
          mysqli_close($conn);
-         die(header("location:viewModificarRecordatorios.php?modificar=true&nombre=".$row["nombre"]."&fInicio=".$row["fechaInicio"]."&fFin=".$row["fechaFin"]."&hora=".$row["hora"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
+         die(header("location:viewGestionarRecordatorios.php?modificar=true&nombre=".$row["nombre"]."&fInicio=".$row["fechaInicio"]."&fFin=".$row["fechaFin"]."&hora=".$row["hora"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
      }
 ?>

@@ -129,7 +129,7 @@
     <script>
         function obtenerFamiliares(){
                 $.ajax({
-                    url: "scriptObtenerFamiliaresModificar.php",
+                    url: "scriptObtenerFamiliaresGestion.php",
                     success: function(data) {
                          document.getElementById("tablaFamiliares").innerHTML = data;
                     }

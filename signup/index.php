@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlFile1">Foto del Paciente</label>
+                <label>Foto del Paciente</label>
                 <input type="file" class="form-control-file" name="imagen">
             </div>
             

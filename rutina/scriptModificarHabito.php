@@ -18,7 +18,7 @@
 
     if($result1 == FALSE) {
         mysqli_close($conn);
-        die(header("location:viewModificarRutina.php?failed=true"));
+        die(header("location:viewGestionarRutina.php?failed=true"));
     }
 
     $row = mysqli_fetch_assoc($result1);
@@ -66,6 +66,6 @@
         echo $sql;
     }else{
         mysqli_close($conn);
-        die(header("location:viewModificarRutina.php?done=true"));
+        die(header("location:viewGestionarRutina.php?done=true"));
     }
 ?>

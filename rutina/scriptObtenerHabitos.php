@@ -24,6 +24,6 @@
      }else{
          $row = mysqli_fetch_assoc($result);
          mysqli_close($conn);
-         die(header("location:viewModificarRutina.php?modificarHabitos=true&nombre=".$row["nombre"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
+         die(header("location:viewGestionarRutina.php?modificarHabitos=true&nombre=".$row["nombre"]."&descripcion=".$row["descripcion"]."&id=".$row["id"]));
      }
 ?>

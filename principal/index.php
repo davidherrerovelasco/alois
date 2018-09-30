@@ -39,24 +39,21 @@
                                 <div class="dropdown-menu">
                                     <a href="../rutina/viewAñadirMedicamentos.php" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
                                     <a href="../rutina/viewAñadirHabito.php" class="list-group-item list-group-item-action ">Añadir Hábito</a>
-                                    <a href="../rutina/viewEliminarRutina.php" class="list-group-item list-group-item-action ">Eliminar Rutina</a>
-                                    <a href="../rutina/viewModificarRutina.php" class="list-group-item list-group-item-action ">Modificar Rutina</a>
+                                    <a href="../rutina/viewGestionarRutina.php" class="list-group-item list-group-item-action ">Gestionar Rutina</a>
                                 </div>
                             </div>
                             <div class="btn-group dropright">
                                 <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Recordatorios</a>
                                 <div class="dropdown-menu">
                                     <a href="../recordatorios/viewAñadirRecordatorios.php" class="list-group-item list-group-item-action ">Añadir Recordatorio</a>
-                                    <a href="../recordatorios/viewEliminarRecordatorios.php" class="list-group-item list-group-item-action ">Eliminar Recordatorio</a>
-                                    <a href="../recordatorios/viewModificarRecordatorios.php" class="list-group-item list-group-item-action ">Modificar Recordatorio</a>
+                                    <a href="../recordatorios/viewGestionarRecordatorios.php" class="list-group-item list-group-item-action ">Gestionar Recordatorios</a>
                                 </div>
                             </div>
                             <div class="btn-group dropright">
                                 <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar Familiares</a>
                                 <div class="dropdown-menu">
                                     <a href="../familiares/viewAñadirFamiliar.php" class="list-group-item list-group-item-action">Añadir Familiares</a>
-                                    <a href="../familiares/viewEliminarFamiliares.php" class="list-group-item list-group-item-action ">Eliminar Familiares</a>
-                                    <a href="../familiares/viewModificarFamiliares.php" class="list-group-item list-group-item-action ">Modificar Familiares</a>
+                                    <a href="../familiares/viewGestionarFamiliares.php" class="list-group-item list-group-item-action ">Gestionar Familiares</a>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +68,7 @@
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
                                 <div class="dropdown-menu" style="color: white">
                                     <a class="dropdown-item" href="#">Opciones</a>
-                                    <a class="dropdown-item" href="#">Ayuda</a>
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#help" style="color:black">Ayuda</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
                                 </div>
@@ -171,6 +168,10 @@
                                    </select>
                                </div>
                            </div>
+                           <div class="form-group">
+                                <label>Añada una foto del familiar</label>
+                                <input type="file" class="form-control-file" name="imagen">
+                           </div>
                            <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary">Añadir</button>
@@ -179,6 +180,25 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- Modal para la presentacion de la Ayuda -->
+        <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ayuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Cerrar</button>
+              </div>
+            </div>
+          </div>
         </div>
         
         <script>

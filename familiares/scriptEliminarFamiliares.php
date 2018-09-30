@@ -23,7 +23,7 @@
          mysqli_close($conn);
      }else{
          mysqli_close($conn);
-         die(header("location:viewEliminarFamiliares.php"));
+         die(header("location:viewGestionarFamiliares.php"));
      }
 
 ?>
