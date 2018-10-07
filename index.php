@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Alois</title>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -10,28 +10,6 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
-        .footer-icons{
-            margin-right: 5px;
-            font-size:25px;
-            color:darkgrey;
-        }
-        
-        body {
-          padding-top: 54px;
-        }
-
-        .carousel-item {
-          height: 65vh;
-          min-height: 300px;
-          background: no-repeat center center scroll;
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-        }
-        
-    </style>
     
     <!--Mensaje para la aceptacion de la politica de cookies-->
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
@@ -53,15 +31,33 @@
           "content": {
             "message": "Utilizamos cookies propias para mejorar nuestros servicios. Si continua con la navegación,consideramos que acepta su uso",
             "dismiss": "Lo tengo!",
-            "link": "http://politicadecookies.com/"
+            "link": "https://cookiesandyou.com/"
           }
         })});
     </script>
-</head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        .parallax {
+            height: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }  
+        .footer-icons{
+            margin-right: 5px;
+            font-size:25px;
+            color:darkgrey;
+        }
+    </style>
 
+</head>
 <body>
+    
     <!--NAVBAR-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#59b300">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <!-- Para pantallas pequeñas -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
@@ -70,65 +66,31 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color:white">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:white">Sobre Nosotros </a>
+                    <a class="nav-link" href="#proyect">Proyecto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact" style="color:white">Contacto </a>
+                    <a class="nav-link" href="#servicios">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:white">Contacto </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:white">Contacto </a>
+                    <a class="nav-link" href="#contact">Contacto</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/signup" style="color:white"><span class="fa fa-user"></span> Regístrate</a></li>
-                <li class="nav-item"><a class="nav-link" href="scriptComprobacion.php" style="color:white"><span class="fa fa-sign-in"></span> Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup"><span class="fa fa-user"></span> Regístrate</a></li>
+                <li class="nav-item"><a class="nav-link" href="scriptComprobacion.php"><span class="fa fa-sign-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
     
-    <header>
-        <!-- Carrousel sin controles -->
-      <div class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-        <div class="carousel-inner">
-            
-          <!-- Primer Slide -->
-          <div class="carousel-item active">
-              <img class="img-fluid" src="Images/foto7.jpeg" alt="First slide" style="height:65vh;width:100vw">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Primera Prueba</h5>
-                <p>...</p>
-              </div>
-          </div>
-          <!-- Segundo Slide-->
-          <div class="carousel-item">
-              <img class="img-fluid" src="Images/foto6.jpeg" alt="First slide" style="height:65vh;width:100vw">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Segunda Prueba</h5>
-                <p>...</p>
-              </div>
-          </div>
-          <!-- Tercer Slide -->
-          <div class="carousel-item">
-              <img class="img-fluid" src="Images/foto3.jpeg" alt="First slide" style="height:65vh;width:100vw">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Tercera Prueba</h5>
-                <p>...</p>
-              </div>
-          </div>
+    <div class="parallax" style="background-image: url('Images/foto8.jpg');opacity: 0.60;">
+        <div class="container-fluid" style="background='transparent'">
+            <h1 class="text-center" style="background-color:transparent;color: #ffffff;padding-top:180px">¿Conoces a alguien con Alzheimer?</h1>
+            <h3 class="text-center" style="background-color:transparent;color: #ffffff;">Podemos ayudarte. Sigue leyendo</h3>
         </div>
-      </div>
-    </header>
+    </div>
     
     <div class="container-fluid" style="padding-left: 60px;padding-right: 60px;padding-top: 60px; padding-bottom: 30px" id="proyect">
         <h2>Proyecto</h2><br>
@@ -151,9 +113,52 @@
         </p>
     </div>
     
+    <div class="parallax" style="background-image: url('Images/foto2.jpeg');opacity: 0.60;">
+        <div class="container-fluid" style="background='transparent'">
+            <h1 class="text-center" style="background-color:transparent;color: #ffffff;padding-top:180px"><i>“El alzhéimer tiene un coste social y emocional altísimo, porque no solo provoca el desgaste cerebral del paciente, sino también de su familia”</i></h1>
+            <h3 class="text-center" style="background-color:transparent;color: #ffffff;padding-buttom:18px"><b>Ana Martínez Gil</b></h3>
+        </div>
+    </div>
+    
+    <div id="servicios" class="container-fluid" style="padding-left: 60px;padding-right: 60px; padding-top: 60px">
+        <h2 class="text-center">Servicios</h2>
+        <h5 class="text-center" style="margin-bottom: 40px;">Ofrecemos gran varidad de servicios para que no tengas que preocuparte de nada.</h5>
+        <div class="card-deck" style="padding-right: 10px; padding-left: 10px; padding-bottom: 60px">
+        <div class="card">
+            <img class="card-img-top" src="Images/servicio1.jpeg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-center">Localización</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="Images/servicio2.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-center">Recordatorios</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="Images/servicio3.jpeg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-center">Ejercita la Memoria</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="parallax" style="background-image: url('Images/foto5.jpg');opacity: 0.60;">
+        <div class="container-fluid" style="background='transparent'">
+            <h1 class="text-center" style="background-color:transparent;color: #ffffff;padding-top:180px"><i>“El 90% de las demencias leves están sin diagnosticar”.</i></h1>
+            <h3 class="text-center" style="background-color:transparent;color: #ffffff;"><b>Pablo Martínez-Lage</b></h3>
+        </div>
+    </div>
+    
+    
     <!-- Contacto -->
     <div id="contact" class="container-fluid" style="padding-left: 60px;padding-right: 60px; padding-top: 60px">
-        <h2 class="text-center">CONTACTO</h2>
+        <h2 class="text-center">Contacto</h2>
         <h5 class="text-center" style="margin-bottom: 20px;">Contacta con nosotros, intentaremos responderle con la mayor brevedad posible</h5>
         <div class="row" style="padding-right: 60px; padding-left:60px">
             <div class="col-sm-5" style="padding-top:30px">
@@ -178,7 +183,6 @@
         </div>
     </div>
     
-    
     <footer style="background-color:#F7F7F7;margin-top:30px">
         <div style="padding-top: 15px">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -191,11 +195,20 @@
             </div>
             <hr>
         </div>
-        <div class="text-center" style="padding-bottom: 10px">
-            <p>David Herrero Velasco, Universidad de Salamanca</p>
-            <p>&copy All right Reserved.</p>
+        <div class="container-fluid text-center" style="padding-bottom: 10px">
+            <div class="row">
+                <div class="col-sm">
+                  <img src="Images/tcue.jpg" style="height:80px">
+                </div>
+                <div class="col-sm">
+                    <p>David Herrero Velasco, Universidad de Salamanca</p>
+                    <p>&copy All right Reserved.</p>
+                </div>
+                <div class="col-sm">
+                  <img src="Images/usal.jpg" style="height:80px">
+                </div>
+            </div>
         </div>
     </footer>
-    
 </body>
 </html>

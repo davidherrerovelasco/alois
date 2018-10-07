@@ -20,9 +20,9 @@
     </style>
     <body onload="inicio()">
         <div>
-            <div class="row" style="height: 100%;width:100%;margin:0px;">
+            <div class="row" style="height:100%;width:100%;margin:0px;">
                 <!--Parte izquierda de la pantalla-->
-                <div class="col-2" style="padding:0px ;border-right: 1px solid">
+                <div class="col-2" style="padding:0px;border-right:1px solid">
                     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
                         <a class="navbar-brand text-white">Alois - Inicio</a>
                     </nav>
