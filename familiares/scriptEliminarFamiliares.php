@@ -14,6 +14,12 @@
         mysqli_close($conn);
         die("Connection failed: " . mysqli_connect_error());
     }
+    
+    $sql = "SELECT imagen FROM familiares where id='".$id."'";
+    $result = mysqli_query($conn, $sql);
+    $row = $result->fetch_assoc();
+
+    unlink ($row["imagen"]);
 
     $sql = "DELETE FROM familiares where id='".$id."'";
     $result = mysqli_query($conn, $sql);

@@ -17,12 +17,22 @@
             border-radius: 11px;
         }
     </style>
+    <script>
+        function comprobarCheck(){
+            var checkBox = document.getElementById("check");
+            if(checkBox.checked){
+                document.getElementById("formulario").submit();
+            }else{
+                $('#modal').modal(show);
+            }
+        }
+    </script>
 </head>
 <body style="background-color:#00264d">
 <div class="container-fluid">
     <div class="contenedor">
         <h2 class="text-center">Regístrate</h2>
-        <form action="scriptSignup.php" method="post" enctype="multipart/form-data">
+        <form action="scriptSignup.php" method="post" enctype="multipart/form-data" id="formulario">
             <div class="form-row">
                 <div class="form-group col-md-6" style="padding-left: 0px">
                     <label for="email">Email</label>
@@ -98,12 +108,12 @@
             </div>
             
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <input class="form-check-input" type="checkbox" id="check" >
                 <label class="form-check-label" for="gridCheck">
                     Acepto terminos y condiciones.
                 </label>
             </div>
-            <button class="btn btn-primary pull-right" style="margin-top: 10px" type="submit">Registrarse</button>
+            <button class="btn btn-primary pull-right" style="margin-top: 10px" onclick="comprobarCheck()">Registrarse</button>
             <?php 
                 if ($_GET["signupFailed"]) 
                 echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">El usuario ya existe en el sistema o los datos son incorrectos</div>';
@@ -114,6 +124,24 @@
             ?>
         </form>
     </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Para porder registrarse debe de aceptar los Términos y Condiciones del servidor
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

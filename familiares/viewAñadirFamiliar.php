@@ -43,7 +43,7 @@
     
         <!--Formulario-->
         <div class="container-fluid" style="padding:20px">
-            <form action="scriptRegistrarFamiliar.php" method="post">
+            <form action="scriptRegistrarFamiliar.php" method="post" enctype="multipart/form-data">
                            <div class="form-row">
                                <div class="form-group col-md-6" style="padding-left: 0px">
                                    <label for="emailFamiliar">Email</label>

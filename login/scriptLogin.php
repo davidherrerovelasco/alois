@@ -29,6 +29,8 @@
         if (password_verify($pass, $hash)){
             //Establecemos las cookies:
             setcookie("id",$row["id"],time()+43200,'/');
+            setcookie("nombre",$row["nombre"],time()+43200,'/');
+            setcookie("ape1",$row["ape1"],time()+43200,'/');
             setcookie("email",$email,time()+43200,'/');
             setcookie("imagen",$row["imagenPaciente"],time()+43200,'/');
             

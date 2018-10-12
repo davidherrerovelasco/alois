@@ -18,10 +18,10 @@
     //Recogemos los datos de la imagen para poder insertarla en el servidor:
     $dir='../Imagenes/Familiares/';
     $expensions= array("jpeg","jpg");
-    $file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
+    /*$file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
     if(in_array($file_ext,$expensions) == false){
-        //die(header("location:index.php?ImageNotSupported=true"));
-    }
+        die(header("location:viewGestionarFamiliares.php"));
+    }*/
     
     // Creamos la conexion
     $conn = mysqli_connect($servername, $username,$password,$dbname);
@@ -56,16 +56,20 @@
             echo "¡Posible ataque de subida de ficheros!\n";
         }
         
-        $sql = "UPDATE familiares set imagenPaciente='".$imagen."' where email='".$email."'";
+        $sql = "UPDATE familiares set imagen='".$imagen."' where email='".$email."'";
         $result = mysqli_query($conn, $sql);
-        
-        //Mandamos email:
-        $mensaje= "Bienvenido a nuestro servicio de atencion y seguimiento de personas con Alzheimer su correo de acceso al sistema es ".$email." Ha sido asignado al paciente: ".$_COOKIE["email"];
-        $resultado=mail($email, "Servidor Alois", $mensaje);
-        if(!$resultado){
-            echo "No se ha podido enviar el mensaje";
+        if($result == FALSE){
+             echo "ha ocurrido un error ".$sql;
+            mysqli_close($conn);
+        }else{
+            //Mandamos email:
+            $mensaje= "Bienvenido a nuestro servicio de atencion y seguimiento de personas con Alzheimer su correo de acceso al sistema es ".$email." Ha sido asignado al paciente: ".$_COOKIE["email"];
+            $resultado=mail($email, "Servidor Alois", $mensaje);
+            if(!$resultado){
+                echo "No se ha podido enviar el mensaje";
+            }
+            mysqli_close($conn);
+            header ("location: ../principal"); 
         }
-        mysqli_close($conn);
-        header ("location: ../principal"); 
     }
 ?>

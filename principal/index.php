@@ -28,7 +28,7 @@
                     </nav>
                     <div id="cabecera" style="height:220px">
                         <img class="rounded mx-auto d-block" style="width:150px;height:100px;margin:30px 0" src="<?php echo $_COOKIE["imagen"];?>">
-                        <h4 class="text-center">David Herrero</h4>
+                        <h4 class="text-center"><?php echo $_COOKIE["nombre"]." ".$_COOKIE["ape1"];?></h4>
                     </div>
                     <div id="menu">
                         <div class="list-group list-group-flush">
@@ -110,7 +110,7 @@
                     </div>
                     <div class="modal-body">
                     <small>No hay ningun familiar registrado para este paciente. Por favor registre uno.</small>
-                       <form action="../familiares/scriptRegistrarFamiliar.php" method="post">
+                       <form action="../familiares/scriptRegistrarFamiliar.php" method="post" enctype="multipart/form-data">
                            <div class="form-row">
                                <div class="form-group col-md-6" style="padding-left: 0px">
                                    <label for="emailFamiliar">Email</label>

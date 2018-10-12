@@ -84,6 +84,8 @@
         setcookie("id",$row["id"],time()+43200,'/');
         setcookie("email",$email,time()+43200,'/');
         setcookie("imagen",$imagen,time()+43200,'/');
+        setcookie("nombre",$row["nombre"],time()+43200,'/');
+        setcookie("ape1",$row["ape1"],time()+43200,'/');
         
         //Mandamos email:
         $mensaje= "Bienvenido a nuestro servicio de atencion y seguimiento de personas con Alzheimer su correo de acceso al sistema es ".$email;
