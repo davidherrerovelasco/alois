@@ -19,12 +19,11 @@
     </style>
     <script>
         function comprobarCheck(){
-            var checkBox = document.getElementById("check");
-            if(checkBox.checked){
+            if(document.getElementById("check").checked){
                 document.getElementById("formulario").submit();
             }else{
-                $('#modal').modal(show);
-            }
+                $("#modal").modal({show: true});
+            }            
         }
     </script>
 </head>
@@ -106,14 +105,12 @@
                 <label>Foto del Paciente</label>
                 <input type="file" class="form-control-file" name="imagen">
             </div>
-            
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="check" >
                 <label class="form-check-label" for="gridCheck">
                     Acepto terminos y condiciones.
                 </label>
             </div>
-            <button class="btn btn-primary pull-right" style="margin-top: 10px" onclick="comprobarCheck()">Registrarse</button>
             <?php 
                 if ($_GET["signupFailed"]) 
                 echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">El usuario ya existe en el sistema o los datos son incorrectos</div>';
@@ -123,6 +120,7 @@
                 echo'<div class="alert alert-danger" style="margin-top: 10px;" role="alert">El formato de la imagen no es admitido</div>';
             ?>
         </form>
+        <button class="btn btn-primary" style="margin-top: 10px" onclick="comprobarCheck()" >Registrarse</button>
     </div>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal">

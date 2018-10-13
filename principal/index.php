@@ -11,92 +11,121 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     </head>
     <style>
-        footer {
+        .sidenav {
+            height: 100%;
+            width: 230px;
             position: fixed;
-            height: 40px;
-            bottom: 0;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #FFFFFF;
+            overflow-x: hidden;
+            padding-top: 20px;
+            border-right:1px solid
+        }
+        .sidenav a {
+            padding: 10px 8px 6px 16px;
+            display: block;
+            font-size: 17px;
+            text-decoration: none;
+            color: black;
+        }
+        /* Style page content */
+        .main {
+            margin-left: 230px; /* Same as the width of the sidebar */
+            padding: 0px 10px;
+        }
+        .accordion {
+            cursor: pointer;
+            padding: 18px;
             width: 100%;
+            text-align: left;
+            outline: none;
+            font-size: 17px;
+            transition: 0.4s;
+        }
+        .active, .accordion:hover {
+            color: #737373;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .accordion:after {
+            content: '\02795';
+            font-size: 12px;
+            color: black;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2796";
         }
     </style>
     <body onload="inicio()">
-        <div>
-            <div class="row" style="height:100%;width:100%;margin:0px;">
-                <!--Parte izquierda de la pantalla-->
-                <div class="col-2" style="padding:0px;border-right:1px solid">
-                    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-                        <a class="navbar-brand text-white">Alois - Inicio</a>
-                    </nav>
-                    <div id="cabecera" style="height:220px">
-                        <img class="rounded mx-auto d-block" style="width:150px;height:100px;margin:30px 0" src="<?php echo $_COOKIE["imagen"];?>">
-                        <h4 class="text-center"><?php echo $_COOKIE["nombre"]." ".$_COOKIE["ape1"];?></h4>
-                    </div>
-                    <div id="menu">
-                        <div class="list-group list-group-flush">
-                            <a href="#" class="list-group-item list-group-item-action">Inicio</a>                            
-                            <a href="#horario" class="list-group-item list-group-item-action ">Horario del Paciente</a>
-                            <div class="btn-group dropright">
-                                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Rutina</a>
-                                <div class="dropdown-menu">
-                                    <a href="../rutina/viewAñadirMedicamentos.php" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
-                                    <a href="../rutina/viewAñadirHabito.php" class="list-group-item list-group-item-action ">Añadir Hábito</a>
-                                    <a href="../rutina/viewGestionarRutina.php" class="list-group-item list-group-item-action ">Gestionar Rutina</a>
-                                </div>
-                            </div>
-                            <div class="btn-group dropright">
-                                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión Recordatorios</a>
-                                <div class="dropdown-menu">
-                                    <a href="../recordatorios/viewAñadirRecordatorios.php" class="list-group-item list-group-item-action ">Añadir Recordatorio</a>
-                                    <a href="../recordatorios/viewGestionarRecordatorios.php" class="list-group-item list-group-item-action ">Gestionar Recordatorios</a>
-                                </div>
-                            </div>
-                            <div class="btn-group dropright">
-                                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar Familiares</a>
-                                <div class="dropdown-menu">
-                                    <a href="../familiares/viewAñadirFamiliar.php" class="list-group-item list-group-item-action">Añadir Familiares</a>
-                                    <a href="../familiares/viewGestionarFamiliares.php" class="list-group-item list-group-item-action ">Gestionar Familiares</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!--SideNAV-->
+        <div class="sidenav">
+            <div id="cabecera" style="padding-top: 50px">
+                <img class="rounded mx-auto d-block" style="width:150px;height:100px;margin:30px 0" src="<?php echo $_COOKIE["imagen"];?>">
+                <h4 class="text-center"><?php echo $_COOKIE["nombre"]." ".$_COOKIE["ape1"];?></h4>
+            </div>
+            <div class="list-group list-group-flush" style="padding-top: 30px">
+                <a href="#" class="list-group-item list-group-item-action">Inicio</a>                            
+                <a href="#horario" class="list-group-item list-group-item-action ">Horario del Paciente</a>
+                <a class="accordion">Gestion Rutina</a>
+                <div class="panel">
+                    <a href="../rutina/viewAñadirMedicamentos.php" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
+                    <a href="../rutina/viewAñadirHabito.php" class="list-group-item list-group-item-action ">Añadir Hábito</a>
+                    <a href="../rutina/viewGestionarRutina.php" class="list-group-item list-group-item-action ">Gestionar Rutina</a>
                 </div>
-                <!--Pagina Principal-->
-                <div class="col-10" style="padding-left:0px;padding-right:0px">
-                    <!--Navbar-->
-                    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-                            <ul class="navbar-nav ml-auto" style="margin-right: 10px">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
-                                <div class="dropdown-menu" style="color: white">
-                                    <a class="dropdown-item" href="#">Opciones</a>
-                                    <a class="dropdown-item" data-toggle="modal" data-target="#help" style="color:black">Ayuda</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!--Parte Principal-->
-                    <div style="heigth:100%;padding: 20px 30px 20px 10px;background-color:#F7F7F7">
-                        <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px">
-                            <h5>Ubicación del Paciente en tiempo Real:</h5>
-
-                            <!--Div para mostrar el mapa donde se encuentra el paciente-->
-                            <div  id="map" style="height:400px;width:100%">
-                            
-                            </div>
-                        </div>
-                        <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:20px">
-                            <h5>Horario del Paciente:</h5>
-
-                            <!--Div para mostrar el horario configurado por el paciente-->
-                            <div class="table-responsive" id="horario" style="width:100%">
-                            
-                            </div>
-                        </div>
-                    </div> 
+                <a class="accordion">Gestion Recordatorios</a>
+                <div class="panel">
+                    <a href="../recordatorios/viewAñadirRecordatorios.php" class="list-group-item list-group-item-action ">Añadir Recordatorio</a>
+                    <a href="../recordatorios/viewGestionarRecordatorios.php" class="list-group-item list-group-item-action ">Gestionar Recordatorios</a>
+                </div>
+                <a class="accordion">Gestion Familiares</a>
+                <div class="panel">
+                    <a href="../familiares/viewAñadirFamiliar.php" class="list-group-item list-group-item-action">Añadir Familiares</a>
+                    <a href="../familiares/viewGestionarFamiliares.php" class="list-group-item list-group-item-action ">Gestionar Familiares</a>
                 </div>
             </div>
         </div>
+        
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+            <a class="navbar-brand text-white">Alois - Inicio</a>
+            <ul class="navbar-nav ml-auto" style="margin-right: 10px">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
+                    <div class="dropdown-menu" style="color: white">
+                        <a class="dropdown-item" href="#">Opciones</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#help" style="color:black">Ayuda</a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--Parte Principal-->
+        <div class="main" style="heigth:100%;padding: 20px 30px 20px 10px;background-color:#F7F7F7">
+            <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px">
+                <h5>Ubicación del Paciente en tiempo Real:</h5>
+                <!--Div para mostrar el mapa donde se encuentra el paciente-->
+                <div  id="map" style="height:400px;width:100%">
+                        
+                </div>
+            </div>
+            <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:20px">
+                <h5>Horario del Paciente:</h5>
+                <!--Div para mostrar el horario configurado por el paciente-->
+                <div class="table-responsive" id="horario" style="width:100%">
+                        
+                </div>
+            </div>
+        </div> 
         
         <!-- Modal para el registro de un familiar -->
         <div class="modal fade bd-example-modal-lg" id="registroFamiliar" tabindex="-1" role="dialog" aria-labelledby="registroFamiliar" aria-hidden="true">
@@ -182,8 +211,8 @@
             </div>
         </div>
         <!-- Modal para la presentacion de la Ayuda -->
-        <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Ayuda</h5>
@@ -192,7 +221,15 @@
                 </button>
               </div>
               <div class="modal-body">
-                ...
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas consequat dui vel massa venenatis dictum. Aenean eget ipsum velit. Phasellus ac mollis quam, at egestas orci. Vestibulum fermentum ut nunc vel lobortis. Ut orci turpis, auctor et interdum in, gravida maximus erat. Nullam vel eleifend ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc mollis felis at gravida mattis. Integer quis eros at nisl pellentesque dapibus at consequat elit. Praesent dapibus sem in urna dapibus, ac egestas velit molestie. Cras in tortor pharetra mauris tincidunt tempor et eget libero. Integer ac leo ac massa feugiat ullamcorper.
+
+                Sed dapibus massa quis erat molestie, sit amet consectetur justo fermentum. Vivamus a suscipit quam. Nunc augue dui, condimentum quis tristique sit amet, rhoncus sed turpis. Maecenas porta massa eget risus accumsan, quis ornare risus imperdiet. Vestibulum euismod nunc ut porttitor auctor. Aliquam vehicula felis id enim convallis elementum. Sed tortor turpis, commodo sit amet cursus sit amet, blandit ac eros. Mauris imperdiet lectus sit amet felis cursus auctor.
+
+                Sed sed lorem consequat, porttitor turpis a, commodo leo. Curabitur in lorem sed libero pulvinar volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam in ipsum quam. Nullam sagittis feugiat sem, eget ornare est posuere at. Praesent eu metus imperdiet, laoreet justo at, euismod est. Pellentesque turpis purus, mattis a dictum in, feugiat quis nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+                Integer egestas scelerisque risus vitae ullamcorper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In pharetra lobortis enim, vitae egestas orci tincidunt eget. In hac habitasse platea dictumst. Donec feugiat, lacus quis facilisis scelerisque, ipsum metus volutpat nisi, sit amet egestas metus purus in libero. Morbi quis nibh eget magna cursus aliquam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet lorem lorem. Morbi sed imperdiet lorem.
+
+                Nullam et gravida quam, a varius tortor. Nam a auctor tellus. Aliquam luctus bibendum sodales. Aliquam aliquam tellus nec metus commodo, eu sagittis lectus porttitor. Suspendisse potenti. Morbi blandit lacus enim, sit amet dignissim mauris accumsan ac. Maecenas id velit luctus, tincidunt augue eu, dictum ex. 
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Cerrar</button>
@@ -201,6 +238,22 @@
           </div>
         </div>
         
+        <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
         <script>
             function initMap() {
               var uluru = {lat: -25.344, lng: 131.036};

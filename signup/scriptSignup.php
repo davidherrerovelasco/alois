@@ -18,16 +18,7 @@
     $pass = $_POST['password']; 
 
     //Encriptamos la contraseña para almacenarla:
-    $passEncripted=password_hash($pass,PASSWORD_DEFAULT);
-
-    //Recogemos los datos de la imagen para poder insertarla en el servidor:
-    $dir='../Imagenes/Pacientes/';
-    $expensions= array("jpeg","jpg");
-    $file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
-    if(in_array($file_ext,$expensions) == false){
-        die(header("location:index.php?ImageNotSupported=true"));
-    }
-    
+    $passEncripted=password_hash($pass,PASSWORD_DEFAULT);    
       
     //Creamos la conexion con el servidor mysql:
     $conn = mysqli_connect($servername, $username, $password,$dbname);
@@ -44,6 +35,14 @@
 
     if(mysqli_num_rows($result)!=0){//Si existe devolvemos error
         die(header("location:index.php?signupFailed=true"));
+    }
+
+    //Recogemos los datos de la imagen para poder insertarla en el servidor:
+    $dir='../Imagenes/Pacientes/';
+    $expensions= array("jpeg","jpg");
+    $file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
+    if(in_array($file_ext,$expensions) == false){
+        die(header("location:index.php?ImageNotSupported=true"));
     }
          
     //Si no existe introducimos al paciente en la base de datos:
