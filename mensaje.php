@@ -1,5 +1,4 @@
 <?php
-    session_start();
     $emailAfectado=$_POST['email'];
     $nombre=$_POST['nombre'];
     $contenido=$_POST['contenido'];
@@ -10,10 +9,15 @@
     $mensaje = $mensaje.$contenido;
 
     $retorno = mail($emailServidor, $nombre, $mensaje);
-
+    
     if($retorno==TRUE){
-       header('Location: index.php');
+       
+        
+        header('Location: index.php');
     }else{
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] mensaje.php - Error al mandar el mensaje al administrador\n", 3, "error.log");
         header('Location: index.php/#contact');
     }
 ?>

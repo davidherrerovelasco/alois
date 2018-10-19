@@ -4,6 +4,11 @@
     $password = "tomate";
     $dbname = "tfg";
 
+    /*$servername = 'db755746108.db.1and1.com';
+    $username = 'dbo755746108';
+    $password = "Salamanca_00";
+    $dbname = 'db755746108';*/
+
     $periodico = $_POST["periodicidad"];
     $dia = $_POST["dia"];
     $frecuencia = $_POST["frecuencia"];
@@ -44,19 +49,22 @@
             
     //Comprobamos la conexion:
     if (!$conn) {
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptAñadirMedicamento.php - Error al conectarse a la base de datos: ".mysqli_connect_error()."\n", 3, "../error.log");
         mysqli_close($conn);
-        die("Connection failed: " . mysqli_connect_error());
+       die(header("location:viewAñadirMedicamentos.php"));
     }
          
     $sql = "INSERT INTO medicamentos (idPaciente,periodico,dia,frecuencia,hora,nombre,descripcion) VALUES ('".$idPaciente."',".$periodicoTmp.",'".$diaTmp."','".$flag."','".$hora."','".$nombre."','".$descripcion."');";
-
     $result = mysqli_query($conn, $sql);
 
     if($result == FALSE) {
-        echo "Ha habido un error al insertar\n";
-        echo "Error : " . mysqli_error($conn);
-        echo $sql;
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptAñadirMedicamento.php - Error INSERT: ".$sql." ".mysqli_error($conn)."\n", 3, "../error.log");
         mysqli_close($conn);
+        die(header("location:viewAñadirMedicamentos.php"));
     }else{
         mysqli_close($conn);
         die(header("location:viewAñadirMedicamentos.php?success=true"));

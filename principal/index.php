@@ -8,7 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     </head>
     <style>
         .sidenav {
@@ -55,15 +55,17 @@
             transition: max-height 0.2s ease-out;
         }
         .accordion:after {
-            content: '\02795';
-            font-size: 12px;
-            color: black;
+            font-family: FontAwesome;
+            content: '\f067';
+            font-size: 15px;
+            color: gray;
             float: right;
             margin-left: 5px;
         }
-
         .active:after {
-            content: "\2796";
+            font-family: FontAwesome;
+            content: '\f068';
+            color: gray;
         }
     </style>
     <body onload="inicio()">
@@ -75,7 +77,7 @@
             </div>
             <div class="list-group list-group-flush" style="padding-top: 30px">
                 <a href="#" class="list-group-item list-group-item-action">Inicio</a>                            
-                <a href="#horario" class="list-group-item list-group-item-action ">Horario del Paciente</a>
+                <a href="#horarioPaciente" class="list-group-item list-group-item-action ">Horario del Paciente</a>
                 <a class="accordion">Gestion Rutina</a>
                 <div class="panel">
                     <a href="../rutina/viewAñadirMedicamentos.php" class="list-group-item list-group-item-action ">Añadir Medicamentos</a>
@@ -100,11 +102,11 @@
             <ul class="navbar-nav ml-auto" style="margin-right: 10px">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
-                    <div class="dropdown-menu" style="color: white">
-                        <a class="dropdown-item" href="#">Opciones</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#help" style="color:black">Ayuda</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#opciones">Opciones</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#help">Ayuda</a>
                         <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
+                        <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
                     </div>
                 </li>
             </ul>
@@ -118,7 +120,7 @@
                         
                 </div>
             </div>
-            <div style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:20px">
+            <div id="horarioPaciente" style="padding: 20px 30px 20px 10px;background-color:#ffffff;border-radius:5px; margin-top:20px">
                 <h5>Horario del Paciente:</h5>
                 <!--Div para mostrar el horario configurado por el paciente-->
                 <div class="table-responsive" id="horario" style="width:100%">
@@ -232,10 +234,32 @@
                 Nullam et gravida quam, a varius tortor. Nam a auctor tellus. Aliquam luctus bibendum sodales. Aliquam aliquam tellus nec metus commodo, eu sagittis lectus porttitor. Suspendisse potenti. Morbi blandit lacus enim, sit amet dignissim mauris accumsan ac. Maecenas id velit luctus, tincidunt augue eu, dictum ex. 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
+        </div>
+
+        <!--Opciones-->
+        <div class="modal fade bd-example-modal-lg" id="opciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Ayuda</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <button type="button" class="btn btn-primary" onclick="location.href='scriptEliminarPaciente.php'">Borrar Paciente</button>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <script>
@@ -256,8 +280,8 @@
         </script>
         <script>
             function initMap() {
-              var uluru = {lat: -25.344, lng: 131.036};
-              var map = new google.maps.Map(document.getElementById('map'), {zoom: 4, center: uluru});
+                var uluru = {lat: -25.344, lng: 131.036};
+                var map = new google.maps.Map(document.getElementById('map'), {zoom: 4, center: uluru});
             }
             
             function inicio(){
@@ -279,6 +303,6 @@
                 });
             }
         </script>            
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnZJp9QqlNIgSOHCsYlw_3USh6fXffFsk&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrgWR0YACVrZiWG-py7Sl_ULF4hEnVyFY&callback=initMap"></script>
     </body>
 </html>

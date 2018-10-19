@@ -45,6 +45,8 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            display: flex;
+            align-items: center;
         }  
         .footer-icons{
             margin-right: 5px;
@@ -86,8 +88,8 @@
     </nav>
     
     <div class="parallax" style="background-image: url('Images/foto8.jpg');opacity: 0.60;">
-        <div class="container-fluid" style="background='transparent'">
-            <h1 class="text-center" style="background-color:transparent;color: #ffffff;padding-top:180px">¿Conoces a alguien con Alzheimer?</h1>
+        <div class="container-fluid" style="background='transparent';">
+            <h1 class="text-center" style="background-color:transparent;color: #ffffff;">¿Conoces a alguien con Alzheimer?</h1>
             <h3 class="text-center" style="background-color:transparent;color: #ffffff;">Podemos ayudarte. Sigue leyendo</h3>
         </div>
     </div>
@@ -115,8 +117,8 @@
     
     <div class="parallax" style="background-image: url('Images/foto2.jpeg');opacity: 0.60;">
         <div class="container-fluid" style="background='transparent'">
-            <h1 class="text-center" style="background-color:transparent;color: #ffffff;padding-top:180px"><i>“El alzhéimer tiene un coste social y emocional altísimo, porque no solo provoca el desgaste cerebral del paciente, sino también de su familia”</i></h1>
-            <h3 class="text-center" style="background-color:transparent;color: #ffffff;padding-buttom:18px"><b>Ana Martínez Gil</b></h3>
+            <h1 class="text-center" style="background-color:transparent;color: #ffffff;"><i>“El alzhéimer tiene un coste social y emocional altísimo, porque no solo provoca el desgaste cerebral del paciente, sino también de su familia”</i></h1>
+            <h3 class="text-center" style="background-color:transparent;color: #ffffff;"><b>Ana Martínez Gil</b></h3>
         </div>
     </div>
     
@@ -150,7 +152,7 @@
     
     <div class="parallax" style="background-image: url('Images/foto5.jpg');opacity: 0.60;">
         <div class="container-fluid" style="background='transparent'">
-            <h1 class="text-center" style="background-color:transparent;color: #ffffff;padding-top:180px"><i>“El 90% de las demencias leves están sin diagnosticar”.</i></h1>
+            <h1 class="text-center" style="background-color:transparent;color: #ffffff;"><i>“El 90% de las demencias leves están sin diagnosticar”.</i></h1>
             <h3 class="text-center" style="background-color:transparent;color: #ffffff;"><b>Pablo Martínez-Lage</b></h3>
         </div>
     </div>

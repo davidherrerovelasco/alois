@@ -39,8 +39,9 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-gear"></span> Configuración</a>
                     <div class="dropdown-menu" style="color: white">
                         <a class="dropdown-item" href="#">Opciones</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#help" style="color:black">Ayuda</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../principal/scriptLogOut.php">Salir</a>
+                            <a class="dropdown-item" href="scriptLogOut.php">Salir</a>
                     </div>
                 </li>
             </ul>

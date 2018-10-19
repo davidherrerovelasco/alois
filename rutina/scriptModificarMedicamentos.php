@@ -4,25 +4,34 @@
     $password = "tomate";
     $dbname = "tfg";
 
+    /*$servername = 'db755746108.db.1and1.com';
+    $username = 'dbo755746108';
+    $password = "Salamanca_00";
+    $dbname = 'db755746108';*/
+
     //Creamos la conexion con el servidor mysql:
     $conn = mysqli_connect($servername, $username, $password,$dbname);
             
     //Comprobamos la conexion:
     if (!$conn) {
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptModificarMedicamentos.php - Error al conectarse a la base de datos: ".mysqli_connect_error()."\n", 3, "../error.log");
         mysqli_close($conn);
-        die("Connection failed: " . mysqli_connect_error());
+        die(header("location:viewGestionarRutina.php?failed=true"));
     }
 
     $sql1="select * from medicamentos where idPaciente='".$_COOKIE["id"]."' and id='".$_GET["id"]."'";
     $result1=mysqli_query($conn, $sql1);
-
     if($result1 == FALSE) {
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptModificarMedicamentos.php - Error SELECT: ".$sql1." ".mysqli_error($conn)."\n", 3, "../error.log");
         mysqli_close($conn);
         die(header("location:viewGestionarRutina.php?failed=true"));
     }
 
     $row = mysqli_fetch_assoc($result1);
-
     $nombre=$row["nombre"];
     $periodico=$row["periodico"];
     $dia=$row["dia"];
@@ -67,14 +76,14 @@
         $descripcion = $_POST['descripcionModificado'];
     }   
 
-    
     $sql="UPDATE medicamentos SET nombre ='".$nombre."', periodico ='".$periodico."', dia ='".$dia."', frecuencia =".$frecuencia.", hora ='".$hora."', descripcion ='".$descripcion."' where id='".$id."'";
     $result=mysqli_query($conn, $sql);
-    
-
-    if($result == FALSE) {  
+    if($result == FALSE) {
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptModificarMedicamentos.php - Error UPDATE: ".$sql." ".mysqli_error($conn)."\n", 3, "../error.log");
         mysqli_close($conn);
-        echo $sql;
+        die(header("location:viewGestionarRutina.php?failed=true"));
     }else{
         mysqli_close($conn);
         die(header("location:viewGestionarRutina.php?done=true"));

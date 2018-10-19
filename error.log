@@ -1,0 +1,10 @@
+Archivo de Registro de errores
+ERROR [Array] mensaje.php - Error al mandar el mensaje al administrador
+ERROR [Array] mensaje.php - Error al mandar el mensaje al administrador
+ERROR [17/10/2018 9:45:24] mensaje.php - Error al mandar el mensaje al administrador
+ERROR [17/10/2018 9:46:1] mensaje.php - Error al mandar el mensaje al administrador
+ERROR [17/10/2018 10:9:59] signup/scriptSignup.php - Error al conectarse a la base de datos: Unknown database 'tf'
+ERROR [18/10/2018 17:24:51] scriptEliminarPaciente.php - Error al conectarse a la base de datos: Unknown database 'tf'
+ERROR [18/10/2018 17:25:11] scriptEliminarPaciente.php - Error al conectarse a la base de datos: Unknown database 'tf'
+ERROR [18/10/2018 17:35:46] signup/scriptSignup.php -Error INSERT: INSERT INTO pacientes (nombre,ape1,ape2,sexo,email,edad,telefono,ciudad,direccion,provincia,contrasena) VALUES ('David','Herrero','','','davidherrerovelasco@gmail.com',,'8732947329','','','','$2y$10$dAxgMXA/9Jkz04PMm3etaOyL0XiLVwzNtQxDnWUYS7y6rJOh1hlh6'); You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''8732947329','','','','$2y$10$dAxgMXA/9Jkz04PMm3etaOyL0XiLVwzNtQxDnWUYS7y6rJOh1h' at line 1
+ERROR [18/10/2018 17:36:12] signup/scriptSignup.php -Error INSERT: INSERT INTO pacientes (nombre,ape1,ape2,sexo,email,edad,telefono,ciudad,direccion,provincia,contrasena) VALUES ('David','Herrero','','','davidherrerovelasco@gmail.com',,'8732947329','','','','$2y$10$fJP.DbsTkSPfNAj9Me1rTusehxBWTDuJVctwh2xYmNS1SPmNuoNui'); You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''8732947329','','','','$2y$10$fJP.DbsTkSPfNAj9Me1rTusehxBWTDuJVctwh2xYmNS1SPmNuo' at line 1

@@ -4,6 +4,11 @@
     $password = "tomate";
     $dbname = "tfg";
 
+    /*$servername = 'db755746108.db.1and1.com';
+    $username = 'dbo755746108';
+    $password = "Salamanca_00";
+    $dbname = 'db755746108';*/
+
     $idPaciente=$_COOKIE["id"];
     $nombre = $_POST['nombreFamiliar'];
     $ape1 = $_POST['ape1Familiar'];
@@ -18,26 +23,31 @@
     //Recogemos los datos de la imagen para poder insertarla en el servidor:
     $dir='../Imagenes/Familiares/';
     $expensions= array("jpeg","jpg");
-    /*$file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
+    $file_ext=strtolower(end(explode('.',$_FILES['imagen']['name'])));
     if(in_array($file_ext,$expensions) == false){
         die(header("location:viewGestionarFamiliares.php"));
-    }*/
+    }
     
     // Creamos la conexion
-    $conn = mysqli_connect($servername, $username,$password,$dbname);
-            
+    $conn = mysqli_connect($servername, $username,$password,$dbname);      
     //Comprobamos la conexion:
     if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptRegistrarFamiliar.php - Error al conectarse a la base de datos: ".mysqli_connect_error()."\n", 3, "../error.log");
+        mysqli_close($conn);
+        die(header("location:viewGestionarFamiliares.php"));
     }
          
     $sql = "INSERT INTO familiares (nombre,ape1,ape2,email,edad,telefono,ciudad,direccion,provincia,idPaciente) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$email."',".$edad.",'".$telefono."','".$ciudad."','".$direccion."','".$provincia."','".$idPaciente."');";
-
     $result = mysqli_query($conn, $sql);
 
     if($result == FALSE) {
-        echo "ha ocurrido un error ".$sql;
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptRegistrarFamiliar.php - Error SELECT: ".$sql." ".mysqli_error($conn)."\n", 3, "../error.log");
         mysqli_close($conn);
+        die(header("location:viewGestionarFamiliares.php"));
     }else{
         //Ponemos la Imagen tanto en la base de datos como en el servidor le llamamos como el id del familiar
         $sql = "SELECT * FROM familiares where email='".$email."'";
@@ -50,17 +60,16 @@
             $imagen = $dir . $row["id"].".jpeg";
         }
         
-        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen)) {
-            echo "El fichero es válido y se subió con éxito.\n";
-        } else {
-            echo "¡Posible ataque de subida de ficheros!\n";
-        }
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen);
         
         $sql = "UPDATE familiares set imagen='".$imagen."' where email='".$email."'";
         $result = mysqli_query($conn, $sql);
         if($result == FALSE){
-             echo "ha ocurrido un error ".$sql;
+            $date = getdate();
+            $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+            error_log("ERROR [".$fecha."] scriptRegistrarFamiliar.php - Error UPDATE: ".$sql." ".mysqli_error($conn)."\n", 3, "../error.log");
             mysqli_close($conn);
+            die(header("location:viewGestionarFamiliares.php"));
         }else{
             //Mandamos email:
             $mensaje= "Bienvenido a nuestro servicio de atencion y seguimiento de personas con Alzheimer su correo de acceso al sistema es ".$email." Ha sido asignado al paciente: ".$_COOKIE["email"];
