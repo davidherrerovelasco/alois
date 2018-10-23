@@ -80,6 +80,17 @@
         die(header("location:index.php"));
     }
 
+    //Eliminamos Localizacion
+    $sql = "DELETE FROM localizacion where idPaciente='".$idPaciente."'";
+    $result = mysqli_query($conn, $sql);
+    if($result == FALSE) {
+        $date = getdate();
+        $fecha = $date["mday"]."/".$date["mon"]."/".$date["year"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+        error_log("ERROR [".$fecha."] scriptEliminarPaciente.php - Error DELETE: ".$sql." ".mysqli_error($conn)."\n", 3, "../error.log");
+        mysqli_close($conn);
+        die(header("location:index.php"));
+    }
+
     //Eliminamos al paciente
     $sql = "SELECT imagenPaciente FROM pacientes where id='".$idPaciente."'";
     $result = mysqli_query($conn, $sql);

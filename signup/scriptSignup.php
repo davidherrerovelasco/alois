@@ -17,9 +17,12 @@
     $edad = $_POST['edad'];
     $telefono = $_POST['telefono'];
     $ciudad = $_POST['ciudad'];
-    $direccion = $_POST['direccion'];
-    $provincia = $_POST['provincia']; 
-    $pass = $_POST['password']; 
+    $calle = $_POST['calle'];
+    $numero = $_POST['numero'];
+    $cp = $_POST['cp'];
+    $pass = $_POST['password'];
+    $lat = $_GET["latitud"];
+    $lng = $_GET["longitud"];
 
     //Encriptamos la contraseña para almacenarla:
     $passEncripted=password_hash($pass,PASSWORD_DEFAULT);    
@@ -52,8 +55,8 @@
     }
          
     //Si no existe introducimos al paciente en la base de datos:
-    $sql = "INSERT INTO pacientes (nombre,ape1,ape2,sexo,email,edad,telefono,ciudad,direccion,provincia,contrasena) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$sexo."','".$email."','".
-        $edad."','".$telefono."','".$ciudad."','".$direccion."','".$provincia."','".$passEncripted."');";
+    $sql = "INSERT INTO pacientes (nombre,ape1,ape2,sexo,email,edad,telefono,ciudad,calle,numero,cp,contrasena,latitud,longitud) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$sexo."','".$email."','".
+        $edad."','".$telefono."','".$ciudad."','".$calle."','".$numero."','".$cp."','".$passEncripted."','".$lat."','".$lng."')";
     $result = mysqli_query($conn, $sql);
     if($result == FALSE) {
         //Error al insertar un paciente:

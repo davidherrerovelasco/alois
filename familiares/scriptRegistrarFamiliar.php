@@ -15,10 +15,11 @@
     $ape2 = $_POST['ape2Familiar'];    
     $email = $_POST["emailFamiliar"];  
     $edad = $_POST['edadFamiliar'];     
-    $telefono = $_POST['telefonoFamiliar'];   
-    $ciudad = $_POST['ciudadFamiliar'];   
-    $direccion = $_POST["direccionFamiliar"];
-    $provincia = $_POST["provinciaFamiliar"];  
+    $telefono = $_POST['telefonoFamiliar'];
+    $ciudad = $_POST['ciudad'];
+    $calle = $_POST['calle'];
+    $numero = $_POST['numero'];
+    $cp = $_POST['cp'];
 
     //Recogemos los datos de la imagen para poder insertarla en el servidor:
     $dir='../Imagenes/Familiares/';
@@ -39,7 +40,7 @@
         die(header("location:viewGestionarFamiliares.php"));
     }
          
-    $sql = "INSERT INTO familiares (nombre,ape1,ape2,email,edad,telefono,ciudad,direccion,provincia,idPaciente) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$email."',".$edad.",'".$telefono."','".$ciudad."','".$direccion."','".$provincia."','".$idPaciente."');";
+    $sql = "INSERT INTO familiares (nombre,ape1,ape2,email,edad,telefono,ciudad,calle,numero,cp,idPaciente) VALUES ('".$nombre."','".$ape1."','".$ape2."','".$email."',".$edad.",'".$telefono."','".$ciudad."','".$calle."','".$numero."','".$cp."','".$idPaciente."');";
     $result = mysqli_query($conn, $sql);
 
     if($result == FALSE) {

@@ -3,6 +3,7 @@
 <head>
     <title>Signup</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -17,21 +18,13 @@
             border-radius: 11px;
         }
     </style>
-    <script>
-        function comprobarCheck() {
-            if (document.getElementById("check").checked) {
-                document.getElementById("formulario").submit();
-            } else {
-                $("#modal").modal({show: true});
-            }
-        }
-    </script>
 </head>
 <body style="background-color:#00264d">
 <div class="container-fluid">
-    <div class="contenedor">
+    <div class=" container-fluid contenedor">
         <h2 class="text-center">Regístrate</h2>
-        <form action="scriptSignup.php" method="post" enctype="multipart/form-data" id="formulario">
+        <h6 class="text-center">Registra al familiar para el que se va a configurar la aplicación.</h6>
+        <form method="post" enctype="multipart/form-data" id="formulario">
             <div class="form-row">
                 <div class="form-group col-md-6" style="padding-left: 0px">
                     <label for="email">Email</label>
@@ -45,22 +38,17 @@
             <div class="form-row">
                 <div class="form-group col-md-4" style="padding-left: 0px">
                     <label for="name">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="ape1">Apellido 1</label>
-                    <input type="text" class="form-control" name="ape1" placeholder="Primer Apellido">
+                    <input type="text" class="form-control" name="ape1" placeholder="Primer Apellido" required>
                 </div>
                 <div class="form-group col-md-4" style="padding-right: 0px">
                     <label for="ape2">Apellido 2</label>
-                    <input type="text" class="form-control" name="ape2" placeholder="Segundo Apellido">
+                    <input type="text" class="form-control" name="ape2" placeholder="Segundo Apellido" required>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="address">Dirección</label>
-                <input type="text" class="form-control" name="direccion" placeholder="Calle, número">
-            </div>
-
             <div class="form-row">
                 <div class="form-group col-md-3" style="padding-left: 0px">
                     <label for="sexo">Sexo</label>
@@ -71,34 +59,36 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="age">Edad</label>
-                    <input type="number" class="form-control" name="edad" placeholder="Edad">
+                    <label for="edad">Edad</label>
+                    <input id="edad" type="number" class="form-control" name="edad" placeholder="Edad">
                 </div>
                 <div class="form-group col-md-6" style="padding-right: 0px">
-                    <label for="phone">Teléfono</label>
+                    <label for="telefono">Teléfono</label>
                     <input type="tel" class="form-control" name="telefono" placeholder="" required>
                 </div>
             </div>
-
+            <div class="form-group" id="locationField">
+                <label for="address">Busqueda direccion paciente:</label>
+                <input class="form-control" name="direccion" id="autocomplete" placeholder="Calle, número" onFocus="geolocate()" type="text">
+            </div>
             <div class="form-row">
+                <div class="form-group col-md-12" style="padding-left: 0px">
+                    <label for="ciudad">Calle</label>
+                    <input id="route" type="text" class="form-control" name="calle" disabled="true" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2" style="padding-left: 0px">
+                    <label for="ciudad">Número</label>
+                    <input id="street_number" type="text" class="form-control" name="numero" disabled="true">
+                </div>
                 <div class="form-group col-md-6" style="padding-left: 0px">
                     <label for="ciudad">Ciudad</label>
-                    <input type="text" class="form-control" name="ciudad">
+                    <input id="locality" type="text" class="form-control" name="ciudad" disabled="true" required>
                 </div>
-                <div class="form-group col-md-6" style="padding-right: 0px">
-                    <label for="inputState">Provincia</label>
-                    <select name="provincia" class="form-control">
-                        <option selected></option>
-                        <option>Salamanca</option>
-                        <option>León</option>
-                        <option>Zamora</option>
-                        <option>Palencia</option>
-                        <option>Valladolid</option>
-                        <option>Ávila</option>
-                        <option>Burgos</option>
-                        <option>Soria</option>
-                        <option>Segovia</option>
-                    </select>
+                <div class="form-group col-md-4" style="padding-right: 0px">
+                    <label for="inputState">CP</label>
+                    <input id="postal_code" type="text" class="form-control" name="cp" disabled="true" required>
                 </div>
             </div>
             <div class="form-group">
@@ -132,6 +122,24 @@
             </div>
             <div class="modal-body">
                 Para porder registrarse debe de aceptar los Términos y Condiciones del servidor
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Para porder registrarse debe de tener mas de 18 años
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
@@ -505,5 +513,70 @@
         </div>
     </div>
 </div>
+<script>
+    var autocomplete,lat,lng;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+        var place = autocomplete.getPlace();
+        lat = place.geometry.location.lat();
+        lng = place.geometry.location.lng();
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+
+    function comprobarCheck() {
+        if (document.getElementById("check").checked) {
+            if(document.getElementById("edad").value < 18){
+                $("#modal2").modal({show: true});
+            }else {
+                document.getElementById("formulario").action="scriptSignup.php?latitud="+lat+"&longitud="+lng;
+                document.getElementById("formulario").submit();
+            }
+        } else {
+            $("#modal").modal({show: true});
+        }
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA05cDkteukU7Jo5WMZSBunS4E2ElJ9pz0&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 </html>

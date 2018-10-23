@@ -37,10 +37,12 @@
     $ape2=$row1["ape2"];
     $sexo=$row1["sexo"];
     $edad=$row1["edad"];
-    $ciudad=$row1["ciudad"];
-    $direccion=$row1["direccion"];
-    $provincia=$row1["provincia"];
+    $ciudad = $row1["ciudad"];
+    $calle = $row1["calle"];
+    $numero = $row1["numero"];
+    $cp = $row1["cp"];
     $id =$row1["id"];
+    $flag=0;
 
     if(isset($_POST['nombreModificado']) && $_POST['nombreModificado']!=""){
         $nombre = $_POST['nombreModificado'];
@@ -57,15 +59,23 @@
     if(isset($_POST['ciudadModificado']) && $_POST['ciudadModificado']!=""){
         $ciudad = $_POST['ciudadModificado'];
     }
-    if(isset($_POST['direccionModificado']) && $_POST['direccionModificado']!=""){
-        $direccion = $_POST["direccionModificado"];
+
+    if(isset($_POST['calleModificado']) && $_POST['calleModificado']!=""){
+        $calle = $_POST["calleModificado"];
+        $flag = 1;
     }
-    if(isset($_POST['provinciaModificado']) && $_POST['provinciaModificado']!=""){
-        $provincia = $_POST["provinciaModificado"]; 
+    if($flag==1){//la calle ha sido modificada y puede haber numero nuevo
+        $numero='';
+    }
+    if(isset($_POST['numeroModificado']) && $_POST['numeroModificado']!=""){
+        $numero = $_POST["numeroModificado"];
+    }
+    if(isset($_POST['cpModificado']) && $_POST['cpModificado']!=""){
+        $cp = $_POST["cpModificado"];
     }
 
     
-    $sql="UPDATE familiares SET nombre ='".$nombre."', ape1 ='".$ape1."', ape2 ='".$ape2."', edad =".$edad.", ciudad ='".$ciudad."', direccion ='".$direccion."', provincia ='".$provincia."' where id='".$id."'";
+    $sql="UPDATE familiares SET nombre ='".$nombre."', ape1 ='".$ape1."', ape2 ='".$ape2."', edad =".$edad.", ciudad ='".$ciudad."', calle ='".$calle."', numero ='".$numero."' , cp ='".$cp."' where id='".$id."'";
     $result=mysqli_query($conn, $sql);
     if($result == FALSE) {  
         $date = getdate();
